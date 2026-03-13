@@ -1,0 +1,325 @@
+/* BASE / TOKENS*/
+
+#root {
+  background: transparent;
+}
+
+/* Light default */
+:root {
+  --bg: #ffffff;
+  --text-main: #111827;
+
+/* Gradiente do light  */
+  --text-accent-1: #111827;
+  --text-accent-2: #022c86;
+  --neon: #34A102;
+}
+
+/* Dark */
+[top-nav="dark"] {
+  --bg: #0d0d0d;
+  --text-main: #ffffff;
+  --text-accent-1: #34A102;
+  --text-accent-2: #5aff9c;
+}
+
+/* Dark */
+[data-theme="dark"] {
+  --bg: #0d0d0d;
+  --text-main: #ffffff;
+  --text-accent-1: #34A102;
+  --text-accent-2: #5aff9c;
+}
+
+/* fundo geral */
+html,
+body {
+  background: var(--bg);
+  margin: 0;
+  padding: 0;
+}
+
+/* HEADER (grupo inteiro) */
+.top-nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  background: transparent;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* LIGHT MODE */
+[data-theme="light"] .top-nav{
+  background: #fff;          
+}
+
+.top-nav .navbar,
+.top-nav .container-fluid,
+.top-nav .navbar-collapse{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.top-nav .navbar{
+  padding-top: 40px !important;
+  padding-bottom: 0px !important;
+  right: 100px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* links */
+.top-nav .nav-link{
+  color: #fff !important;
+}
+
+[data-theme="light"] .top-nav .nav-link{
+  color: #000000 !important;
+}
+
+main{
+  padding-top: 0px;
+}
+
+/* TITLE (H1) */
+.title {
+  position: fixed;
+  left: 270px;
+  top: 38%;
+  transform: translateY(-50%);
+  margin: 0;
+  text-align: left;
+  font-size: clamp(2.2rem, 3vw, 3rem);
+  font-weight: 800;
+
+  /* fallback (se algo falhar) */
+  color: var(--text-main);
+
+  /* gradiente */
+  background: linear-gradient(90deg, var(--text-accent-1), var(--text-accent-2));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 5s linear infinite;
+}
+
+p.fade-wrap {
+  position: fixed;
+  left: 270px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 700px;
+  margin: 0;
+  white-space: pre-line;
+  text-align: left;
+}
+
+/* Texto animado dentro do parágrafo */
+p .fade-text {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.8px;
+  background: linear-gradient(90deg, var(--text-accent-1), var(--text-accent-2));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 6s linear infinite;
+}
+
+/* Fade */
+.fade-text {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-text.hidden {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+/* Animação do gradiente: esquerda -> direita */
+@keyframes textGlow {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* IMG (Octocat)*/
+.imagem-canto {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: clamp(460px, 12vw, 537px);
+  aspect-ratio: 1/1;
+  height: auto;
+  z-index: 1;
+  display: flex;
+}
+
+/*SIDEBAR*/
+.sidebar {
+  position: fixed;
+  left: 20px;
+  top: 45%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  width: 80px;
+  z-index: 9999;
+}
+
+/*Botões laterais*/
+.theme-btn,
+.theme-btn2,
+.theme-btn3 {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hover base */
+.theme-btn:hover,
+.theme-btn2:hover,
+.theme-btn3:hover {
+  transform: scale(1.08);
+  filter:
+    drop-shadow(0 0 8px var(--neon))
+    drop-shadow(0 0 28px var(--neon));
+  transition: 0.2s ease;
+}
+
+/* Pulsar só no botão principal (opcional) */
+@keyframes neonPulse {
+  0% { filter: drop-shadow(0 0 6px var(--neon)); }
+  50% { filter: drop-shadow(0 0 16px var(--neon)); }
+  100% { filter: drop-shadow(0 0 6px var(--neon)); }
+}
+
+.theme-btn {
+  animation: neonPulse 2.5s infinite ease-in-out;
+}
+
+/* TRANSLATE BUTTON (canto inferior direito)*/
+.theme-translate {
+  background: transparent;
+  position: fixed;
+  cursor: pointer;
+  border: none;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 16px;
+  z-index: 99999;
+}
+
+/* SVG HOVER*/
+svg {
+  transition: 0.3s;
+}
+svg:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px #00ff9f);
+}
+
+/* Section*/
+section {
+  display: flex;
+  justify-content: right;
+  width: 537px;
+  height: 537px;
+  aspect-ratio: 1/1;
+}
+
+section img {
+  max-width: 90%;
+}
+
+.footer-icons{
+  left: 30px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  padding: 12px 16px;
+  display: flex;
+  gap: 14px;
+  z-index: 9999;
+}
+
+.footer-icon{
+  width: 47.016px;
+  height: 47.813px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .footer-icon{
+  color: #ffffff; /* Dark */
+}
+
+.footer-icon svg{
+  width: 300%;
+  height: 100%;
+}
+
+/* camada fixa atrás de tudo */
+.bg-icons{
+  position: fixed;
+  inset: 0;     
+  pointer-events: none; 
+}
+
+/* cada ícone */
+.bg-icon{
+  position: absolute;
+  pointer-events: auto; 
+  transition: transform .25s ease, filter .25s ease, opacity .25s ease;
+}
+
+.bg-icon svg{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* brilho no hover */
+.bg-icon:hover{
+  filter: drop-shadow(0 0 10px #ffffff) drop-shadow(0 0 22px #ffffff);
+  opacity: 0.35 !important;
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+html { scroll-behavior: smooth; }
+
+main{
+  padding-top: 0px; 
+}
+
+
